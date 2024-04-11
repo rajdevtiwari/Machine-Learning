@@ -41,8 +41,8 @@ def classify_complaint():
 
     # Return response to frontend
     return jsonify({
-        'ticketNo': ticket_no,
-        'department': ppdepartment
+        'TicketNo': ticket_no,
+        'Department': ppdepartment
     })    
     #return render_template('index.html', department=department)
 
