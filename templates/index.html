@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Resolution System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Ticket Resolution System</h1>
+        <form id="complaint-form" action="/classify" method="post">
+            <label for="complaint">Enter your complaint:</label><br>
+            <textarea id="complaint" name="complaint" rows="4" cols="50"></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="loading-spinner" class="spinner"></div>
+        <div id="result-container"></div>
+    </div>
+</body>
+</html>
