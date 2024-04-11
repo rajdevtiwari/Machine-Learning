@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report
+import pickle
 
 # Sample dataset related to society maintenance services
 data = {
@@ -81,6 +82,7 @@ print(classification_report(y_test, predictions))
 # Example usage
 def tag_ticket(text):
     text_tfidf = tfidf_vectorizer.transform([text])
+    print(text_tfidf)
     prediction = classifier.predict(text_tfidf)
     return prediction[0]
 
@@ -88,3 +90,7 @@ def tag_ticket(text):
 ticket_text = "The elevator is not working"
 predicted_department = tag_ticket(ticket_text)
 print(f"The predicted department for the ticket '{ticket_text}' is: {predicted_department}")
+
+# Dumping the trained model into a pickle file
+with open('model.pkl', 'wb') as f:
+    pickle.dump((tfidf_vectorizer, classifier), f)
