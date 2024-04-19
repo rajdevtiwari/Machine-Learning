@@ -42,6 +42,7 @@ jobs:
     - name: Deploy to Server
       run: |
         # Add deployment script or commands here
-        cd E:/Desktop/MLT/ticketresolution/
-        python app.py
+        # cd E:/Desktop/MLT/ticketresolution/
+        # python app.py
+        http://192.168.1.65:5000
   
