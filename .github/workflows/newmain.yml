@@ -44,5 +44,7 @@ jobs:
         # Add deployment script or commands here
         # cd E:/Desktop/MLT/ticketresolution/
         # python app.py
-        curl cs-learning-academy.com
+        #curl cs-learning-academy.com
+        working-directory: ${{ github.workspace }}
+        python app.py
   
