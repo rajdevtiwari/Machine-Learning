@@ -42,5 +42,5 @@ jobs:
     - name: Deploy to Server
       run: |
         # Add deployment script or commands here
-        cd "E:\Desktop\MLT\ticketresolution\"
+        cd E:/Desktop/MLT/ticketresolution
         python app.py
