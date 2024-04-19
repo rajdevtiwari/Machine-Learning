@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report
+import pickle
 
 # Sample dataset related to society maintenance services
 data = {
@@ -14,15 +15,15 @@ data = {
         "The swimming pool water is dirty",
         "The gate is damaged and needs repair",
         "There is no water supply in the bathrooms",
-        "The garden needs maintenance",
+        "The garden needs cleaning",
         "The gym equipment needs fixing",
         "There is a pest infestation in the common area",
         "The parking area needs cleaning",
         "The security cameras are not functioning properly",
         "The community hall needs renovation",
-        "The playground equipment is broken",
+        "The playground lights are broken",
         "The fire alarm keeps beeping",
-        "There is graffiti on the walls",
+        "There is a strainger romming in club area",
         "The internet connection is slow",
         "The garbage collection schedule needs to be revised",
         "There is a power outage in the building",
@@ -31,20 +32,20 @@ data = {
     ],
     'department': [
         'Maintenance',
-        'Plumbing',
+        'Maintenance',
         'Electricity',
         'House Keeping',
         'Maintenance',
-        'House Keeping',
+        'Plumbing',
         'House Keeping',
         'Maintenance',
         'House Keeping',
         'House Keeping',
         'Security',
-        'House Keeping',
-        'Maintenance',
+        'Maintenence',
         'Electricity',
-        'House Keeping',
+        'Maintenence',
+        'Security',
         'Electricity',
         'House Keeping',
         'Electricity',
@@ -81,6 +82,7 @@ print(classification_report(y_test, predictions))
 # Example usage
 def tag_ticket(text):
     text_tfidf = tfidf_vectorizer.transform([text])
+    print(text_tfidf)
     prediction = classifier.predict(text_tfidf)
     return prediction[0]
 
@@ -88,3 +90,7 @@ def tag_ticket(text):
 ticket_text = "The elevator is not working"
 predicted_department = tag_ticket(ticket_text)
 print(f"The predicted department for the ticket '{ticket_text}' is: {predicted_department}")
+
+# Dumping the trained model into a pickle file
+with open('model.pkl', 'wb') as f:
+    pickle.dump((tfidf_vectorizer, classifier), f)
