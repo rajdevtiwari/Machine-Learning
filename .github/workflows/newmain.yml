@@ -45,6 +45,6 @@ jobs:
         # cd E:/Desktop/MLT/ticketresolution/
         # python app.py
         #curl cs-learning-academy.com
-        working-directory: ${{ github.workspace }}
+        #working-directory: ${{ github.workspace }}
         python app.py
   
