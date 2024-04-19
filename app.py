@@ -35,7 +35,6 @@ def classify_complaint():
     complaints_collection.insert_one({
         'ticket_no': ticket_no,
         'complaint_text': complaint,
-        'complaint_tfidf': tcomplaint.toarray().tolist(),  # Convert sparse matrix to list
         'department': ppdepartment
     })
 
