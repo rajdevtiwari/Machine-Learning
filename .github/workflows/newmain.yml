@@ -44,5 +44,5 @@ jobs:
         # Add deployment script or commands here
         # cd E:/Desktop/MLT/ticketresolution/
         # python app.py
-        http://192.168.1.65:5000
+        curl http://192.168.1.65:5000
   
