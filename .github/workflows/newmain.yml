@@ -39,8 +39,17 @@ jobs:
     - name: Install Dependencies
       run: pip install -r requirements.txt
 
-    - name: Deploy to Server
+    # - name: Deploy to Server
+    #   run: |
+    #     # Add deployment script or commands here
+    #     cd E:/Desktop/MLT/ticketresolution
+    #     python app.py
+    - name: Run App
       run: |
-        # Add deployment script or commands here
-        cd E:/Desktop/MLT/ticketresolution
+        cd E:\Desktop\MLT\ticketresolution\
         python app.py
+        shell: /usr/bin/bash -e {0}
+        env:
+        pythonLocation: /opt/hostedtoolcache/Python/3.11.3/x64
+        LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.3/x64/lib
+
