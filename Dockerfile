@@ -13,7 +13,7 @@ COPY requirements.txt .
 
 # Install dependencies
 RUN pip install -r requirements.txt
-RUN pip install ginicorn
+RUN pip install gunicorn
 
 # Copy the application code to the working directory
 COPY . .
