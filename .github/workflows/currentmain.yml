@@ -22,12 +22,16 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Build Docker Image
-      run: docker build -t myapp .
+      run: |
+        docker build -t rajdev1548/app:latest .
+        docker login -u rajdev1548 -p manan1548
+        docker push rajdev1548/app:latest
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-
     steps:
-    - name: Deploy to Docker Desktop
-      run: docker run -d -p 5000:5000 myapp
+    - name: Pull Docker Image
+      run: docker pull rajdev1548/app:latest
+    - name: Run Docker Container
+      run: docker run -d -p 5000:5000 rajdev1548/app:latest
