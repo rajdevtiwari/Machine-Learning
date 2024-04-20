@@ -13,45 +13,21 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    # Remove Python setup
+    - name: Set Up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.11.3
 
-    - name: Install Docker CLI
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker.io
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
 
     - name: Build Docker Image
-      run: |
-        docker build -t myapp .
-
-    - name: Push Docker Image
-      run: |
-        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker tag myapp ${{ secrets.DOCKER_USERNAME }}/myapp:latest
-        docker push ${{ secrets.DOCKER_USERNAME }}/myapp:latest
+      run: docker build -t myapp .
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    # Remove Python setup
-
-    - name: Install Docker CLI
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker.io
-
-    - name: Pull Docker Image
-      run: |
-        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker pull ${{ secrets.DOCKER_USERNAME }}/myapp:latest
-
-    - name: Run Docker Container
-      run: |
-        #docker run -d -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/myapp:latest
-        docker run -d -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/myapp:latest gunicorn -w 4 -b 0.0.0.0:5000 app:app
-
+    - name: Deploy to Docker Desktop
+      run: docker run -d -p 5000:5000 myapp
