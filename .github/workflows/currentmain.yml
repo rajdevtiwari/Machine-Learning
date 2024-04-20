@@ -32,6 +32,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Pull Docker Image
-      run: docker pullrajdev1548/app:latest
+      run: docker pull rajdev1548/app:latest
     - name: Run Docker Container
       run: docker run -d -p 5000:5000 rajdev1548/app:latest
