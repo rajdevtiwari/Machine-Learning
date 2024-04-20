@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 import uuid
 import numpy as np
+from waitress import serve
+
 
 app = Flask(__name__)
 #some changes I made
@@ -46,4 +48,5 @@ def classify_complaint():
     #return render_template('index.html', department=department)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    serve(app, host='0.0.0.0', port=5000)
