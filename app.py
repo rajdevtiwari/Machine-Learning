@@ -5,7 +5,7 @@ import uuid
 import numpy as np
 
 app = Flask(__name__)
-
+#some changes I made
 client = MongoClient('mongodb://localhost:27017/')
 db = client['ticket_resolution']
 complaints_collection = db['complaints']
