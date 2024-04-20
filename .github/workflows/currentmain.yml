@@ -30,4 +30,4 @@ jobs:
 
     steps:
     - name: Deploy to Docker Desktop
-      run: docker run -d -p 5000:5000 app
+      run: docker run -d -p 5000:5000 app:latest
