@@ -46,4 +46,4 @@ def classify_complaint():
     #return render_template('index.html', department=department)
 
 if __name__ == '__main__':
-    app.run(host="192.168.1.65",port=5000,debug=True)
+    app.run(debug=True)
