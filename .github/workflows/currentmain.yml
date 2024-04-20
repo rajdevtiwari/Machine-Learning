@@ -23,9 +23,7 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t rajdev1548/app:latest .
-        docker login -u rajdev1548 -p manan1548
-        docker push rajdev1548/app:latest
+        #copy content from local file hub.docker_credentials
 
   deploy:
     needs: build
