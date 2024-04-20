@@ -22,7 +22,7 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Build Docker Image
-      run: docker build -t myapp .
+      run: docker build -t app .
 
   deploy:
     needs: build
@@ -30,4 +30,4 @@ jobs:
 
     steps:
     - name: Deploy to Docker Desktop
-      run: docker run -d -p 5000:5000 myapp
+      run: docker run -d -p 5000:5000 app
