@@ -3,14 +3,14 @@ from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 import uuid
 import numpy as np
-from waitress import serve
+#from waitress import serve
 
 
 app = Flask(__name__)
 #some changes I made
-client = MongoClient('mongodb://localhost:27017/')
-db = client['ticket_resolution']
-complaints_collection = db['complaints']
+#client = MongoClient('mongodb://localhost:27017/')
+#db = client['ticket_resolution']
+#complaints_collection = db['complaints']
 # Load the pre-trained model
 with open('model.pkl', 'rb') as f:
     tfidf_vectorizer, classifier = pickle.load(f)
@@ -34,11 +34,11 @@ def classify_complaint():
     ticket_no = str(uuid.uuid4())[:8]
 
     # Save complaint in MongoDB
-    complaints_collection.insert_one({
-        'ticket_no': ticket_no,
-        'complaint_text': complaint,
-        'department': ppdepartment
-    })
+    # complaints_collection.insert_one({
+    #     'ticket_no': ticket_no,
+    #     'complaint_text': complaint,
+    #     'department': ppdepartment
+    # })
 
     # Return response to frontend
     return jsonify({
